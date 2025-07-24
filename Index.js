@@ -12,14 +12,16 @@ const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
 const referenceInDtb = ref(database, "Texts")
 
-const inputEl = document.getElementById("Input");
-const outputEl = document.getElementById("ul-list");
-const buttonEl = document.getElementById("Button");
-let messages = [];
+const inputEl = document.getElementById("Input")
+const outputEl = document.getElementById("ul-list")
+const buttonEl = document.getElementById("Button")
+let messages = []
 
 outputEl.style.display = 'none'
 
-buttonEl.addEventListener("click", handleAddMessage) 
+buttonEl.addEventListener("click", handleAddMessage(), function() {
+    push(referenceInDtb, inputEl.value)
+}) 
 
 function handleAddMessage() {
     const value = inputEl.value.trim()
@@ -29,7 +31,6 @@ function handleAddMessage() {
     }
     messages.push(value)
     renderMessages()
-    push(referenceInDtb, renderMessages())
     inputEl.value = ""
     outputEl.style.display = 'flex'
 }
