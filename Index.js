@@ -1,3 +1,18 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js"
+import { 
+    getDatabase,
+    ref,
+    push,
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js"
+
+const firebaseConfig = {
+    databaseURL: "https://leads-tracker-app-d90a4-default-rtdb.firebaseio.com/"
+}
+
+const app = initializeApp(firebaseConfig)
+const database = getDatabase(app)
+const referenceInDtb = ref(database, "Texts")
+
 const inputEl = document.getElementById("Input");
 const outputEl = document.getElementById("ul-list");
 const buttonEl = document.getElementById("Button");
@@ -5,23 +20,17 @@ let messages = [];
 
 outputEl.style.display = 'none'
 
-buttonEl.addEventListener("click", handleAddMessage) // Adds an event listener to the button
-
-let storedMessages = JSON.parse( localStorage.getItem("Texts") )
-if (storedMessages) {
-    messages = storedMessages
-    renderMessages() // If there are messages in localStorage, render them
-}
+buttonEl.addEventListener("click", handleAddMessage) 
 
 function handleAddMessage() {
-    const value = inputEl.value.trim() // storing the value of the input(which is empty) into a variable
-    if (!value) { // Just because value is a truthy value, we don't need to put it in a condition
+    const value = inputEl.value.trim()
+    if (!value) {
         alert("You need to write something!")
-        return // If the value is empty, send a message to the user saying, "You need to write something!"
+        return
     }
     messages.push(value)
     renderMessages()
-    localStorage.setItem("Texts", JSON.stringify(messages)) // Store the messages in localStorage
+    push(referenceInDtb, renderMessages())
     inputEl.value = ""
     outputEl.style.display = 'flex'
 }
@@ -32,3 +41,12 @@ function renderMessages() {
         outputEl.innerHTML += `<li class="green-box">${msg}</li>`
     })
 }
+
+onValue(referenceInDtb, function(snapshot) {
+    const snapshotExist = snapshot.exists() 
+    if (snapshotExist) {
+        const snapshotValues = snapshot.val()
+        let objectVal = Object.value(snapshotValues)
+        renderMessages(objectVal)
+    }
+})
