@@ -6,8 +6,8 @@
 
 body {
   margin: 0;
+  gap: 20px;
   min-height: 100vh;
-  gap: 10px; 
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -39,44 +39,35 @@ body {
   text-align: center;
 }
 
-.Phone {
-  height: 600px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  background: rgb(209, 199, 199);
-  border-radius: 25px;
-}
-
 .Box {
-  height: 550px;
-  width: 270px;
-  max-width: 280px;
+  height: 90%;
+  width: 100%;
+  max-width: 100vw;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   align-items: end;
   background: white;
   border-radius: 20px;
 }
 
 .flex {
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content:  center;
   align-items: center;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 #Input {
-  width: 80%;
+  width: 100%;
   height: 30px;
   border-radius: 10px;
   border: 1px solid #ccc;
   padding: 0 10px;
   font-size: 16px;
+  outline: none;
 }
 
 #Button {
@@ -108,8 +99,10 @@ body {
 }
 
 ul {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: start;
   overflow: scroll;
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -125,6 +118,19 @@ span {
   margin-top: 20px;
   margin-right: -8px;
   margin-bottom: 0;
-  position: absolute;
   color: white;
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(3px);
+  }
+}
+
+.animateone {
+  animation: hover 1.5s ease-in-out infinite alternate;
 }

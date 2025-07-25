@@ -16,6 +16,7 @@ const finputEl = document.getElementById("User")
 const inputEl = document.getElementById("Input")
 const outputEl = document.getElementById("ul-list")
 const buttonEl = document.getElementById("Button")
+const greenEl = document.querySelector("li")
 let messages = []
 
 outputEl.style.display = 'none'
@@ -49,4 +50,8 @@ onValue(referenceInDtb, function(snapshot) {
         let objectVal = Object.values(snapshotValues)
         renderMessages(objectVal)
     }
+})
+
+greenEl.addEventListener("click", function() {
+    greenEl.classList.add('animateone')
 })
