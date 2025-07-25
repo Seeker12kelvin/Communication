@@ -35,10 +35,10 @@ function handleAddMessage() {
     outputEl.style.display = 'flex'
 }
 
-function renderMessages(msg) {
+function renderMessages(objectVal) {
     outputEl.innerHTML = ""
-    for (let i = 0; i < msg.length; i++) {
-        outputEl.innerHTML += `<li class="green-box">${msg[i]} <span style='font-size:8px;'>&#8598;${finputEl.value} </span> </li>`
+    for (let i = 0; i < objectVal.length; i++) {
+        outputEl.innerHTML += `<li class="green-box">${objectVal[i]} <span style='font-size:8px;'>&#8598;${finputEl.value} </span> </li>`
     }
 }
 
