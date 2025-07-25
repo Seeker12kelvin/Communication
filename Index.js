@@ -19,9 +19,7 @@ let messages = []
 
 outputEl.style.display = 'none'
 
-buttonEl.addEventListener("click", handleAddMessage(), function() {
-    push(referenceInDtb, inputEl.value)
-}) 
+buttonEl.addEventListener("click", handleAddMessage) 
 
 function handleAddMessage() {
     const value = inputEl.value.trim()
@@ -31,11 +29,12 @@ function handleAddMessage() {
     }
     messages.push(value)
     renderMessages()
+    push(referenceInDtb, value)
     inputEl.value = ""
     outputEl.style.display = 'flex'
 }
 
-function renderMessages() {
+function renderMessages(msg) {
     outputEl.innerHTML = ""
     messages.forEach(msg => {
         outputEl.innerHTML += `<li class="green-box">${msg}</li>`
