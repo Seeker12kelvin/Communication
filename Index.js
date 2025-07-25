@@ -46,7 +46,7 @@ onValue(referenceInDtb, function(snapshot) {
     const snapshotExist = snapshot.exists() 
     if (snapshotExist) {
         const snapshotValues = snapshot.val()
-        let objectVal = Object.value(snapshotValues)
+        let objectVal = Object.values(snapshotValues)
         renderMessages(objectVal)
     }
 })
