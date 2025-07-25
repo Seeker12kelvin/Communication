@@ -123,4 +123,8 @@ li {
 
 span {
   margin-top: 20px;
+  margin-right: -8px;
+  margin-bottom: 0;
+  position: absolute;
+  color: white;
 }

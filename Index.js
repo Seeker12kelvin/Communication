@@ -38,7 +38,7 @@ function handleAddMessage() {
 function renderMessages(msg) {
     outputEl.innerHTML = ""
     for (let i = 0; i < msg.length; i++) {
-        outputEl.innerHTML += `<li class="green-box">${msg} <span style='font-size:8px;'>&#8598;${finputEl.value} </span> </li>`
+        outputEl.innerHTML += `<li class="green-box">${msg[i]} <span style='font-size:8px;'>&#8598;${finputEl.value} </span> </li>`
     }
 }
 
